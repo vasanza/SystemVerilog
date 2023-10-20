@@ -1,5 +1,9 @@
 # SystemVerilog
+SystemVerilog Repository on GitHub: Explore our collection of SystemVerilog code snippets, modules, and projects. 
+This repository showcases a variety of SystemVerilog implementations for digital design, verification, and FPGA programming.
+Whether you're a beginner or an experienced engineer, find valuable resources, examples, and tools to enhance your SystemVerilog skills and accelerate your projects.
 
+## ➡️ #DigitalSystems #DigitalElectronic #DigitalCircuits #FPGA
 
 - # Repository technical specifications
 - **IDE:** Quartus Prime 17.0.0 Build 595 04/25/2017 SJ Standard Edition
