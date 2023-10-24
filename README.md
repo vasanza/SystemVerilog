@@ -6,9 +6,9 @@ SystemVerilog Repository on GitHub: Explore our collection of SystemVerilog code
 ## ➡️ #DigitalSystems #DigitalElectronic #DigitalCircuits #FPGA
 
 - # Repository technical specifications
-- **IDE:** Quartus Prime 17.0.0 Build 595 04/25/2017 SJ Standard Edition
-- **DEVICE:** FPGA Cyclone V SE 5CSEBA6U23I7
-- **Hardware TERASIC:** DE10NANO, DE10STANDARD
+- **IDE:** Vivado ML Edition - 2023.2  Full Product Installation
+- **DEVICE:** FPGA part -  XC7A35TICSG324-1L
+- **Hardware DIGILENT:** Arty A7-100T: Artix-7 FPGA Development Board
 
 ## About
 - [Summary](https://vasanza.blogspot.com/p/summary.html).
