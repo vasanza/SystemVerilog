@@ -15,6 +15,7 @@ module Accum #(parameter int n=4) (
     // Outputs
     output logic [n-1:0] Q  // Accumulated result (n bits)
 );
+    // Assignments
     // always_ff block triggered on positive clock edge or negative Resetn edge
     always_ff @(posedge Clk or negedge Resetn) begin
         if (~Resetn) begin
