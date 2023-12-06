@@ -1,4 +1,4 @@
-// Counter up
+// Counter up with Load
 // Repository: https://github.com/vasanza/SystemVerilog
 // Read more: https://vasanza.blogspot.com
 
@@ -17,7 +17,7 @@ module Cnt_Ld #(parameter int n = 4) (
 
 	// Signals, Constants, Variables, Components
 
-	// Process #1
+	//Architecture
 	always_ff @(posedge Clk or negedge resetn) begin
 		if (!resetn) begin
 			q <= '0;
