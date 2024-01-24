@@ -10,9 +10,6 @@ SystemVerilog Repository on GitHub: Explore our collection of SystemVerilog code
 - **DEVICE:** FPGA part -  XC7A35TICSG324-1L
 - **Hardware DIGILENT:** Arty A7-100T: Artix-7 FPGA Development Board
 
-## About
-- [Summary](https://vasanza.blogspot.com/p/summary.html).
-
 # Keynote
 ## Clone
 - git status
