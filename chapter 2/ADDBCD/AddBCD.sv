@@ -4,9 +4,6 @@
 // Read more: 
 // https://vasanza.blogspot.com
 
-// Library
-`include "sv_stdlib.sv" // Assuming sv_stdlib.sv contains standard libraries
-
 // Module
 module AddBCD (
     input logic [3:0] A, B,
@@ -17,8 +14,8 @@ module AddBCD (
 
     // Combinational logic for BCD addition
     always_comb begin
-        temp = (8'b0000, A) + (8'b0000, B);
-        temp2 = (temp > 9) ? (temp + 8'b00000110) : temp;
+        temp = {4'h00, A} + {4'h00, B};
+        temp2 = (temp > 9) ? (temp + 8'h06) : temp;
         D = temp2[7:4]; // Tens
         U = temp2[3:0]; // Units
     end

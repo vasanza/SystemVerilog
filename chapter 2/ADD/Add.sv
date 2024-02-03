@@ -3,9 +3,6 @@
 // Repository: https://github.com/vasanza/SystemVerilog
 // Read more: https://vasanza.blogspot.com
 
-// Package import
-`include "sv_stdlib.sv"
-
 // Module declaration
 module Add #(parameter int n=4) (
     input logic signed [n-1:0] X, Y,

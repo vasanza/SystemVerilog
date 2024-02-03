@@ -13,7 +13,7 @@ module Accum #(parameter int n=4) (
     input logic [n-1:0] Data,  // Input data (n bits)
     
     // Outputs
-    output logic [n-1:0] Q  // Accumulated result (n bits)
+    output logic [n-1:0] Q  // Accumulated result (n bits)a
 );
     // Assignments
     // always_ff block triggered on positive clock edge or negative Resetn edge
