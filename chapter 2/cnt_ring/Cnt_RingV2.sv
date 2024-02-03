@@ -2,8 +2,7 @@
 // Repository: https://github.com/vasanza/SystemVerilog
 // Read more: https://vasanza.blogspot.com
 
-//Library
-`include "sv_stdlib.sv"
+
 
 //Module declaration
 module Cnt_RingV2 (
@@ -20,7 +19,7 @@ module Cnt_RingV2 (
 always_ff @(posedge Clk or negedge resetn) begin
     if (!resetn) begin
         q <= 4'b0000;
-    end else if (posedge Clk) begin
+    end else begin
         if (en) begin
             case (q)
                 4'b0000: q <= 4'b1000;

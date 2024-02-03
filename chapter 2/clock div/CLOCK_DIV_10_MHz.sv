@@ -2,8 +2,6 @@
 // Repository: https://github.com/vasanza/SystemVerilog
 // Read more: https://vasanza.blogspot.com
 
-// Library
-`include "sv_stdlib.sv"
 
 // Module
 module CLOCK_DIV_10_MHz (

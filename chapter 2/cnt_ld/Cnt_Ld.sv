@@ -2,8 +2,6 @@
 // Repository: https://github.com/vasanza/SystemVerilog
 // Read more: https://vasanza.blogspot.com
 
-//Library
-`include "sv_stdlib.sv"
 
 //Module declaration
 module Cnt_Ld #(parameter int n = 4) (
@@ -21,7 +19,7 @@ module Cnt_Ld #(parameter int n = 4) (
 	always_ff @(posedge Clk or negedge resetn) begin
 		if (!resetn) begin
 			q <= '0;
-		end else if (Clk'event && Clk) begin
+		end else if (Clk) begin
 			if (en && !ld) begin
 				q <= q + 1;
 			end else if (en && ld) begin

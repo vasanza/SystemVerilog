@@ -3,9 +3,6 @@
 // https://github.com/vasanza/SystemVerilog
 // Read more: 
 // https://vasanza.blogspot.com
-
-// Library
-`include "sv_stdlib.sv"
 	
 // Module
 module ALU #(parameter int n = 8) (
