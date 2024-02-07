@@ -1,3 +1,5 @@
+`timescale 1ns/1ns
+
 module tb_accum;
     // Parameters
     localparam int n = 6;
