@@ -2,23 +2,13 @@
 `include "common.sv"
 import common::*;
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Book: Mastering FPGA: Exploring Advanced Applications and Implementations
+// Chaper: 3
 // 
-// Create Date: 01/24/2024 07:59:36 PM
-// Design Name: 
-// Module Name: example_01
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
+// example number 3 
+//
+//
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -51,25 +41,25 @@ module example_03(
         stateNext = A ? S1 : S0 ; 
         end
     S1: begin
-        Q = 3'b001;
-        if (D == 4'b0001) begin 
+        Q = 3'b011;
+        if (D == 4'b0100) begin 
             stateNext = S2; 
         end else begin 
             stateNext = S1;
         end 
     end 
     S2: begin
-        Q = 3'b010;
-        stateNext = A&B&C ? S3 : S2;
+        Q = 3'b100;
+        stateNext = A&B ? S3 : S2;
     end 
     
     S3:begin 
-        Q = 3'b011;
-        stateNext = (D == 4'b1111) ? S4 : S3;
+        Q = 3'b000;
+        stateNext = (D == 4'b1000) ? S4 : S3;
     end 
     
     S4:begin 
-        Q = 3'b100;
+        Q = 3'b111;
         stateNext = S0;
     end 
     
