@@ -11,8 +11,9 @@ import common::*;
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module example_02(
-    input logic clk,rstN,A,B,C,[3:0] D,
+module example_04(
+    input logic clk,rstN,A,B,C,
+    input logic [3:0] D,
     output logic [7:0]Q 
     );
     
@@ -31,7 +32,12 @@ module example_02(
   always_comb begin 
   
   case (state)
-    S0:begin stateNext = A ? S1 : S0 ; end
+    S0:begin
+      if (A)
+      stateNext = S1; 
+      else 
+      stateNext = S0; 
+    end
     S1: begin
         if (D == 4'b0010) begin 
             stateNext = S2; 
@@ -39,8 +45,19 @@ module example_02(
             stateNext = S1;
         end 
     end 
-    S2: begin stateNext = A&B ? S3 : S2;end 
-    S3:begin stateNext = (D == 4'b1000) ? S4 : S3;end 
+    S2: begin 
+      if(A&B)
+        stateNext = S3;
+      else
+        stateNext = S2;
+      end 
+    S3:begin
+      if (D == 4'b1000)
+        stateNext = S4 ;
+      else 
+        stateNext = S3 ;
+      end 
+    
     S4:begin stateNext = S0;end 
     default : begin stateNext = S0;end 
   endcase
@@ -50,20 +67,22 @@ module example_02(
   always_comb begin 
   case (state)
     S0:begin 
-    if (A & B & C)begin Q = 8'h20;end 
+    if (A & B & C)begin Q = 8'h20; end 
     else begin Q = 8'h30; end
     end
     S1: begin
-    if (A & C )begin Q = 8'h50;end 
+    if (A & C )begin Q = 8'h50; end 
     else begin Q = 8'h60; end
     end 
     S2: begin 
-    if (A & B & C )begin Q = 8'hff;end 
+    if (A & B & C )begin Q = 8'hff; end 
     else begin Q = 8'h54; end
     end
     S3:begin 
-    if (D>3'h03)begin Q = 8'h67;end 
-    else begin Q = 3'8'h45; end
+    if (D>3'h3)begin Q = 8'h67; end 
+    else begin 
+      Q = 8'h45; 
+    end
     end
     S4:begin 
     if (D>3'h02)begin Q = 3'b010;end 

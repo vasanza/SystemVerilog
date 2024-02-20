@@ -1,26 +1,14 @@
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Book: Mastering FPGA: Exploring Advanced Applications and Implementations
+// Chapter: 3
 // 
-// Create Date: 01/24/2024 08:22:21 PM
-// Design Name: 
-// Module Name: example_01_tb
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
+// example number 3 
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns / 1ns
 
-module tb_example_01;
+module tb_example_03;
 
   // Define parameters
   parameter CLK_PERIOD = 10; // Clock period in ns
@@ -31,7 +19,7 @@ module tb_example_01;
   logic [2:0] Q;
 
   // Instantiate the module under test
-  example_01 uut (
+  example_03 uut (
     .clk(clk),
     .rstN(rstN),
     .A(A),
@@ -53,34 +41,30 @@ module tb_example_01;
     B     = 0;
     C     = 0;
     D     = 4'b0000;
-
     // Apply reset
     #10 rstN = 0;
-
     // Wait for a few clock cycles
     #20 rstN = 1;
-
     // Apply test vectors
-    A = 1;
-    #20
-    D = 4'b0001;
-    #20
     B = 1;
+    #10 D = 4'b0001;
+    #10 D = 4'b0011;
+    #10 D = 4'b0100;
+    A = 1;
     C = 1;
-    #20
+    #10
     D = 4'b1111;
-
+    #10
+    D = 4'b1000;
     #20;
-
-    // Add more test vectors as needed
 
     // End simulation after some time
    $finish;
   end
 
   initial begin
-    $dumpfile("tb_example_01.vcd");
-    $dumpvars(0, tb_example_01);
+    $dumpfile("tb_example_03.vcd");
+    $dumpvars(0, tb_example_03);
   end
  
  endmodule

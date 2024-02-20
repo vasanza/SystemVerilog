@@ -23,15 +23,15 @@ import common::*;
 
 
 module example_02(
-    input logic clk,rstN,A,B,C,[3:0] D,
+    input logic clk,rstN,A,B,C,
+    input logic [3:0] D,
     output logic [2:0]Q 
     );
     
-    common::example_states state = common::S0, stateNext = common::S0;
+example_states state = S0, stateNext = S0;
 /* sucuential logic for async reset */
   always_ff @(posedge clk or negedge rstN) begin
     if (!rstN) begin
-      Q <= 3'b000;
       state <= S0;
     end
     else begin
@@ -42,16 +42,32 @@ module example_02(
   always_comb begin 
   
   case (state)
-    S0:begin stateNext = A ? S1 : S0 ; end
+    S0:begin 
+    if (A)
+      stateNext = S1; 
+    else 
+      stateNext = S0; 
+    end
+    
     S1: begin
-        if (D == 4'b0001) begin 
-            stateNext = S2; 
-        end else begin 
-            stateNext = S1;
-        end 
+    if (D == 4'b0001) begin 
+      stateNext = S2; 
+    end else begin 
+      stateNext = S1;
     end 
-    S2: begin stateNext = A&B&C ? S3 : S2;end 
-    S3:begin stateNext = (D == 4'b1111) ? S4 : S3;end 
+    end 
+    S2: begin 
+    if (A&B&C)
+      stateNext =  S3;
+    else 
+      stateNext = S2;
+    end 
+    S3:begin
+    if  (D == 4'b1111)
+      stateNext =  S4 ;
+    else 
+      stateNext =  S3 ;
+    end 
     S4:begin stateNext = S0;end 
     default : begin stateNext = S0;end 
   endcase
@@ -59,6 +75,10 @@ module example_02(
   
   /* we can use a secondary combinatorial logic block for the output logic*/ 
   always_comb begin 
+  if (!rstN) begin
+      Q = 3'b000;
+  end
+  else  begin
   case (state)
     S0:begin 
     if (A & B )begin Q = 3'b001;end 
@@ -69,23 +89,21 @@ module example_02(
     else begin Q = 3'b010; end
     end 
     S2: begin 
-    if (A & B & C )begin Q = 3'b101;end 
+    if (A & B & C ) begin Q = 3'b101; end 
     else begin Q = 3'b100; end
     end
     S3:begin 
-    if (D>3'h01)begin Q = 3'b000;end 
+    if (D>4'h1) begin Q = 3'b000; end 
     else begin Q = 3'b111; end
     end
     S4:begin 
-    if (D>3'h02)begin Q = 3'b010;end 
+    if (D>4'h2)begin Q = 3'b010;end 
     else begin Q = 3'b001; end
     end
-    
-    default : begin Q = 3'h00;end 
-  
-    
+    default : begin Q = 4'h0 ; end 
+
   endcase
-  
+  end
   end
     
 endmodule

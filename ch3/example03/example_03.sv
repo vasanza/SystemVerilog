@@ -12,10 +12,9 @@ import common::*;
 //////////////////////////////////////////////////////////////////////////////////
 
 
-
-
 module example_03(
-    input logic clk,rstN,A,B,C,[3:0] D,
+    input logic clk,rstN,A,B,C,
+    input logic [3:0] D,
     output logic [2:0]Q 
     );
     
@@ -37,9 +36,13 @@ module example_03(
   
   case (state)
     S0:begin 
-        Q = 3'b000;
-        stateNext = A ? S1 : S0 ; 
-        end
+      Q = 3'b000;
+      if (B)
+        stateNext = S1 ;
+      else 
+        stateNext = S0 ; 
+      end
+
     S1: begin
         Q = 3'b011;
         if (D == 4'b0100) begin 
@@ -50,12 +53,18 @@ module example_03(
     end 
     S2: begin
         Q = 3'b100;
-        stateNext = A&B ? S3 : S2;
+        if (A&B)
+        stateNext = S3;
+        else 
+        stateNext = S2;
     end 
     
     S3:begin 
         Q = 3'b000;
-        stateNext = (D == 4'b1000) ? S4 : S3;
+        if  (D == 4'b1000)
+        stateNext = S4;
+        else 
+        stateNext = S3;
     end 
     
     S4:begin 
